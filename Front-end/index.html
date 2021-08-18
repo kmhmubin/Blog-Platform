@@ -8,7 +8,7 @@
     <title>Write Up</title>
     <link rel="stylesheet" href="/src/tailwind.css" />
   </head>
-  <body class="font-sans max-w-screen-2xl mx-auto sm:px-6 lg:px-8 bg-gray-200">
+  <body class="font-mono overflow-y-auto">
     <div class="relative min-h-screen bg-gray-100">
       <!-- When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars -->
       <header
@@ -43,7 +43,7 @@
                 <a href="#">
                   <img
                     class="block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark.svg?color=rose&amp;shade=500"
+                    src="/image/logo.svg"
                     alt="Workflow"
                   />
                 </a>
@@ -203,7 +203,27 @@ Heroicon name: outline/x"
             >
               <a
                 href="#"
-                class="text-sm font-medium text-gray-900 hover:underline"
+                class="
+                  inline-flex
+                  items-center
+                  px-2.5
+                  py-1.5
+                  border border-transparent
+                  text-sm
+                  font-medium
+                  rounded
+                  shadow-sm
+                  bg-gradient-to-r
+                  from-pink-500
+                  via-red-500
+                  to-yellow-500
+                  text-gray-900
+                  hover:bg-rosy-600 hover:text-gray-900
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-offset-2
+                  focus:ring-rose-500
+                "
               >
                 Go Premium
               </a>
@@ -329,7 +349,7 @@ Heroicon name: outline/x"
                     @mouseenter="activeIndex = 0"
                     @mouseleave="activeIndex = -1"
                     @click="open = false; focusButton()"
-                    >Your Profile</a
+                    >Profile</a
                   >
 
                   <a
