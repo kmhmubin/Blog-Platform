@@ -9,6 +9,7 @@ pillow = "*"
 mysqlclient = "*"
 django-debug-toolbar = "*"
 django-froala-editor = "*"
+django-autoslug = "*"
 
 [dev-packages]
 
