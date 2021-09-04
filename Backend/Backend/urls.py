@@ -19,7 +19,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+# Customize the admin panel Header
+admin.site.site_header = 'Write Up Admin Panel'
+admin.site.index_title = 'Admin'
+
 urlpatterns = [
+    path('froala_editor/', include('froala_editor.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
     path('admin/', admin.site.urls),
     path('', include('blog.urls'))
