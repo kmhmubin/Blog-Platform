@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'debug_toolbar',
     'froala_editor',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
