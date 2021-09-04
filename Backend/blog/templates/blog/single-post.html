@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ post.title }}</h1>
+    <br>
+    {% for tag in tags %}
+
+        <h2 style="border: 1px solid red">{{ tag }}</h2>
+    {% endfor %}
+
+    <br>
+    <p>{{ post.content }}</p>
+
+{% endblock %}
