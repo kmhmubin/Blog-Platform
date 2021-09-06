@@ -1,19 +1,14 @@
 from django.contrib import admin
 
-from .models import Article, Tag
+from .models import Article
 
-
-# Display custom list for tag model
-class TagAdmin(admin.ModelAdmin):
-    # show custom field
-    list_display = ("name", "created")
-  
 
 # Display custom list for Article model
+@admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ("title", "created")
-
-
-# Register all blog models
-admin.site.register(Article, ArticleAdmin)
-admin.site.register(Tag, TagAdmin)
+    list_display = ('title', 'author', 'publish', 'status')
+    list_filter = ('status', 'created', 'publish', 'author')
+    search_fields = ('title', 'author')
+    raw_id_fields = ('author',)
+    date_hierarchy = 'publish'
+    ordering = ('status', 'publish')

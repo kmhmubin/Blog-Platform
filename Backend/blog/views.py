@@ -6,7 +6,7 @@ from .models import Article
 
 # display all blog posts
 def posts(request):
-    all_posts = Article.objects.all().order_by("-created")
+    all_posts = Article.objects.all().order_by("-publish")
     context = {'all_posts': all_posts}
     return render(request, 'blog/posts.html', context)
 
@@ -16,7 +16,6 @@ def single_post(request, slug):
     post = Article.objects.get(slug=slug)
     context = {
         'post': post,
-        'tags': post.tags.all(),
     }
     return render(request, 'blog/single-post.html', context)
 
