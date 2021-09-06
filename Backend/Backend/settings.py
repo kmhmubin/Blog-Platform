@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'froala_editor',
     'users.apps.UsersConfig',
+    'taggit',
 ]
+
+TAGGIT_CASE_INSENSITIVE = True
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',

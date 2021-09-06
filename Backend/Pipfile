@@ -10,6 +10,7 @@ mysqlclient = "*"
 django-debug-toolbar = "*"
 django-froala-editor = "*"
 django-autoslug = "*"
+django-taggit = "*"
 
 [dev-packages]
 
