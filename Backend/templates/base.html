@@ -13,7 +13,7 @@
     <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}"/>
     {# Custom Style #}
     <link rel="stylesheet" href="{% static 'css/tailwind.css' %}"/>
-    <title>Write up</title>
+    <title>Write up {% block title %}{% endblock title %}</title>
 </head>
 <body class="font-mono overflow-y-auto">
 <div class="relative min-h-screen bg-gray-100">

@@ -29,7 +29,7 @@ class Article(models.Model):
     last_update = models.DateTimeField(auto_now=True)
     publish = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-    
+
     # default model manager
     objects = models.Manager()
     # custom model manager
@@ -37,7 +37,7 @@ class Article(models.Model):
 
     # canonical URL for the article
     def get_absolute_url(self):
-        return reverse('blog:single-post', args=[self.slug])
+        return reverse('single-post', args=[self.slug])
 
     # display the title in the admin panel
     def __str__(self):
