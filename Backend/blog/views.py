@@ -6,7 +6,7 @@ from .models import Article
 
 # display all blog posts
 def posts(request):
-    all_posts = Article.objects.all().order_by("-publish")
+    all_posts = Article.published.all()
     context = {'all_posts': all_posts}
     return render(request, 'blog/posts.html', context)
 
