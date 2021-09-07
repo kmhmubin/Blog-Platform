@@ -288,8 +288,8 @@ Heroicon name: outline/x"
                                 <span class="sr-only">Open user menu</span>
                                 <img
                                         class="h-8 w-8 rounded-full"
-                                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                        alt=""
+                                        src="{{ profile.profile_image.url }}"
+                                        alt="{{ profile.name }}"
                                 />
                             </button>
                         </div>
@@ -509,16 +509,16 @@ Heroicon name: outline/x"
                     <div class="flex-shrink-0">
                         <img
                                 class="h-10 w-10 rounded-full"
-                                src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                alt=""
+                                src="{{ profile.profile_image.url }}"
+                                alt="{{ profile.name }}"
                         />
                     </div>
                     <div class="ml-3">
                         <div class="text-base font-medium text-gray-800">
-                            Chelsea Hagon
+                            {{ profile.name }}
                         </div>
                         <div class="text-sm font-medium text-gray-500">
-                            chelseahagon@example.com
+                            {{ profile.email }}
                         </div>
                     </div>
                     <button

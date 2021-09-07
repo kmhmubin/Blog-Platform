@@ -45,10 +45,10 @@ def userRegister(request):
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
-            messages.success(request, "Account created successful")
-
+            messages.success(request, f'{user.username} Account created successful')
+            # auto login
             login(request, user)
-            return redirect('profile')
+            return redirect('posts')
         else:
             messages.error(request, "An error has occurred during registration")
 
@@ -56,10 +56,17 @@ def userRegister(request):
     return render(request, 'users/login-registration.html', context)
 
 
-# user profile page
+# user profile
+def profile(request):
+    all_profiles = Profile.objects.all()
+    context = {'profiles': all_profiles}
+    return render(request, 'users/profile.html', context)
+
+
+# specific user profile page
 def userProfile(request, pk):
-    profile = Profile.objects.get(id=pk)
-    context = {'profile': profile}
+    user_profile = Profile.objects.get(id=pk)
+    context = {'profile': user_profile}
     return render(request, 'users/profile.html', context)
 
 

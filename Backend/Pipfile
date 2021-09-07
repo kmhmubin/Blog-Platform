@@ -11,6 +11,7 @@ django-debug-toolbar = "*"
 django-froala-editor = "*"
 django-autoslug = "*"
 django-taggit = "*"
+crispy-tailwind = "*"
 
 [dev-packages]
 
