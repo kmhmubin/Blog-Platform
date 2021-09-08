@@ -40,13 +40,10 @@ INSTALLED_APPS = [
     'froala_editor',
     'users.apps.UsersConfig',
     'taggit',
-    "crispy_forms",
-    "crispy_tailwind",
+    
 ]
 
 TAGGIT_CASE_INSENSITIVE = True
-CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
-CRISPY_TEMPLATE_PACK = "tailwind"
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',

@@ -1,20 +1,21 @@
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from .forms import CustomUserCreationForm
+# login for exiting user
 from .models import Profile
 
 
-# login for exiting user
 def userLogin(request):
-    page = 'register'
+    page = 'login'
     if request.user.is_authenticated:
         return redirect("posts")
 
     if request.method == 'POST':
-        username = request.POST['username']
+        username = request.POST['username'].lower()
         password = request.POST['password']
 
         try:
@@ -56,16 +57,10 @@ def userRegister(request):
     return render(request, 'users/login-registration.html', context)
 
 
-# user profile
-def profile(request):
-    all_profiles = Profile.objects.all()
-    context = {'profiles': all_profiles}
-    return render(request, 'users/profile.html', context)
-
-
 # specific user profile page
-def userProfile(request, pk):
-    user_profile = Profile.objects.get(id=pk)
+@login_required(login_url='login')
+def userAccount(request):
+    user_profile = request.user.profile
     context = {'profile': user_profile}
     return render(request, 'users/profile.html', context)
 
@@ -73,4 +68,16 @@ def userProfile(request, pk):
 def logoutUser(request):
     logout(request)
     messages.success(request, "Logout Successful")
-    return redirect('login')
+    return redirect('posts')
+
+
+def author(request):
+    authors = Profile.objects.all()
+    context = {'authors': authors}
+    return render(request, 'users/authors.html', context)
+
+
+def authorProfile(request, pk):
+    author_profile = Profile.objects.get(id=pk)
+    context = {'author': author_profile}
+    return render(request, 'users/author-profile.html', context)

@@ -11,7 +11,7 @@ class Profile(models.Model):
     username = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField(max_length=200, null=True, blank=True)
     bio = models.TextField(max_length=200, blank=True, null=True)
-    profile_image = models.ImageField(upload_to='profiles', blank=True, null=True, default='astronaut.svg')
+    profile_image = models.ImageField(upload_to='profiles', blank=True, null=True, default='astronaut.jpg')
     address_1 = models.CharField('Present Address', max_length=128, null=True, blank=True)
     address_2 = models.CharField('Present Address cont..', max_length=128, blank=True, null=True)
     city = models.CharField('City', max_length=65, blank=True, null=True)
@@ -27,8 +27,10 @@ class Profile(models.Model):
     updated = models.DateTimeField(auto_now=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
+    # display the username
     def __str__(self):
         return str(self.username)
 
+    # show the list by created date
     class Meta:
-        ordering = ['name']
+        ordering = ['created']

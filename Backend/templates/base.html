@@ -18,32 +18,29 @@
 <body>
 <div class="font-mono overflow-y-auto">
 
+    {% include 'navbar.html' %}
+    {#        {% include 'notification.html' %}#}
 
-    <div class="relative min-h-screen bg-gray-100">
-
-        {% include 'navbar.html' %}
-        {% include 'notification.html' %}
-
-        <div class="py-10">
-            <div
-                    class="
+    <div class="py-10">
+        <div
+                class="
             max-w-3xl
             mx-auto
             sm:px-6
             lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8
           "
-            >
+        >
 
 
-                {% block content %}
+            {% block content %}
 
-                {% endblock %}
-            </div>
+            {% endblock %}
         </div>
-        {% include 'footer.html' %}
-
     </div>
+    {% include 'footer.html' %}
+
 </div>
+
 <script src="{% static 'js/alpine.js' %}"></script>
 <script src="{% static 'js/components-v2.js' %}"></script>
 </body>
