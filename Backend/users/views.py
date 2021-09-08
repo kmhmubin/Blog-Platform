@@ -10,8 +10,8 @@ from .models import Profile
 # login for exiting user
 def userLogin(request):
     page = 'register'
-    # if request.user.is_authenticated:
-    #     return redirect("profile")
+    if request.user.is_authenticated:
+        return redirect("posts")
 
     if request.method == 'POST':
         username = request.POST['username']
@@ -24,11 +24,11 @@ def userLogin(request):
 
         user = authenticate(request, username=username, password=password)
 
-        # if user is not None:
-        #     login(request, user)
-        #     return redirect('blog')
-        # else:
-        #     messages.error(request, "Username or Password is incorrect")
+        if user is not None:
+            login(request, user)
+            return redirect('posts')
+        else:
+            messages.error(request, "Username or Password is incorrect")
 
     return render(request, 'users/login-registration.html')
 
