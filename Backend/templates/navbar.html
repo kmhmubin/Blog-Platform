@@ -603,33 +603,30 @@ Heroicon name: outline/x"
                     >
                 </div>
             {% else %}
+                <div class="max-w-3xl mx-auto px-3 pt-4 pb-4 space-y-2 sm:px-4">
                 <a
                         href="{% url 'login' %}"
                         class="
-                  ml-6
-                  inline-flex
-                  items-center
-                  px-4
-                  py-2
-                  border border-transparent
-                  text-sm
-                  font-medium
-                  rounded-md
-                  shadow-sm
+                  btn
                   text-white
                   bg-rose-600
                   hover:bg-rose-700
-                  focus:outline-none
-                  focus:ring-2
-                  focus:ring-offset-2
-                  focus:ring-rose-500
                 "
                 >
                     Login
                 </a>
 
             {% endif %}
-
+            <a
+                    href="#"
+                    class="
+                  btn gradient text-white
+                  hover:bg-rosy-600 hover:text-gray-900
+                "
+            >
+                Go Premium
+            </a>
+            </div>
         </div>
     </nav>
 </header>
