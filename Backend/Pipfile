@@ -7,11 +7,9 @@ name = "pypi"
 django = "*"
 pillow = "*"
 mysqlclient = "*"
-django-debug-toolbar = "*"
-django-froala-editor = "*"
 django-autoslug = "*"
+django-debug-toolbar = "*"
 django-taggit = "*"
-crispy-tailwind = "*"
 
 [dev-packages]
 

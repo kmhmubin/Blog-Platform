@@ -1,4 +1,4 @@
-"""Backend URL Configuration
+"""backend URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -19,16 +19,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-# Customize the admin panel Header
-admin.site.site_header = 'Write Up Admin Panel'
-admin.site.index_title = 'Admin'
-
 urlpatterns = [
-    path('froala_editor/', include('froala_editor.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
     path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
-    path('', include('users.urls')),
+    path('', include('user.urls')),
+    path('blog/', include('blog.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
