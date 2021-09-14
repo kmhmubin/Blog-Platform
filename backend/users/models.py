@@ -7,6 +7,7 @@ import uuid
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField('Full Name', max_length=200, blank=True, null=True)
+    username = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField(max_length=200, null=True, blank=True)
     profile_tagline = models.CharField(max_length=200, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
@@ -28,4 +29,4 @@ class Profile(models.Model):
 
     # display the username
     def __str__(self):
-        return str(self.user.username)
+        return str(self.name)
