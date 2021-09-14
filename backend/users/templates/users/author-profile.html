@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+
+<main class="lg:col-span-12 xl:col-span-8">
+    <div class="space-y-4">
+        <!-- Author Profile overview -->
+        <section
+                aria-labelledby="profile-overview-title"
+                class="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg"
+        >
+            <h2 class="sr-only" id="profile-overview-title">
+                Profile Overview
+            </h2>
+            <div class="bg-white p-6">
+                <div class="sm:flex sm:items-center sm:justify-between">
+                    <div class="sm:flex sm:space-x-5">
+                        <div class="flex-shrink-0">
+                            <img
+                                    class="mx-auto h-20 w-20 rounded-full"
+                                    src="{{ profile.profile_image.url }}"
+                                    alt="{{ profile.name }}"
+                            />
+                        </div>
+                        <div
+                                class="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left"
+                        >
+                            <p class="text-xl font-bold text-gray-900 sm:text-2xl">
+                                {{ profile.name|title }}
+                            </p>
+                            <p class="text-sm font-medium text-gray-600">
+                                {{ profile.profile_tagline }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-5 flex justify-center sm:mt-0">
+                        <a
+                                href="#"
+                                class="
+                          flex
+                          justify-center
+                          items-center
+                          px-4
+                          py-2
+                          border border-gray-300
+                          shadow-sm
+                          text-sm
+                          font-medium
+                          rounded-md
+                          text-gray-700
+                          bg-white
+                          hover:bg-gray-50
+                        "
+                        >
+                            Follow
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div
+                    class="
+                    border-t border-gray-200
+                    bg-gray-50
+                    grid grid-cols-1
+                    divide-y divide-gray-200
+                    sm:grid-cols-3 sm:divide-y-0 sm:divide-x
+                  "
+            >
+                <div class="px-6 py-5 text-sm font-medium text-center">
+                    <span class="text-gray-900">322</span>
+                    <!-- space -->
+                    <span class="text-gray-600">Followers</span>
+                </div>
+
+                <div class="px-6 py-5 text-sm font-medium text-center">
+                    <span class="text-gray-900">44</span>
+                    <!-- space -->
+                    <span class="text-gray-600">Following</span>
+                </div>
+
+                <div class="px-6 py-5 text-sm font-medium text-center">
+                    <span class="text-gray-900">32.1K</span>
+                    <!-- space -->
+                    <span class="text-gray-600">Appereciations</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Post  -->
+
+        <section
+                aria-labelledby="quick-links-title"
+                class="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg"
+        >
+            <h2 class="sr-only" id="quick-links-title">Quick links</h2>
+            <ul class="space-y-4">
+                <li class="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
+                    <article aria-labelledby="question-title-81614">
+                        <a href="#">
+                            <!-- author details & option menus -->
+                            <div class="flex space-x-3">
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-sm text-gray-500">
+                                        <time datetime="2020-12-09T11:43:00"
+                                        >December 9 at 11:43 AM
+                                        </time
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- article title -->
+                            <h1
+                                    id="question-title-81614"
+                                    class="mt-4 text-xl font-medium text-gray-900"
+                            >
+                                Tailwind CSS tutorial - Learn how to build websites
+                                using a utility-first CSS framework
+                            </h1>
+                        </a>
+                    </article>
+                </li>
+            </ul>
+        </section>
+    </div>
+</main>
+
+
+</body>
+</html>
