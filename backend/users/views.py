@@ -78,3 +78,10 @@ def author_profile(request, pk):
     author = Profile.objects.get(id=pk)
     context = {'profile': author}
     return render(request, 'users/author-profile.html', context)
+
+
+# user account
+def user_account(request):
+    profile = request.user.profile
+    context = {'profile': profile}
+    return render(request, 'users/profile.html', context)
