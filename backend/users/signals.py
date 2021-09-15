@@ -7,7 +7,6 @@ from .models import Profile
 # create a profile for a user
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
-    print('signal is triggered')
     # checking if the user exist
     if created:
         user = instance
