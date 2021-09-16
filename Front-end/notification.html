@@ -501,6 +501,7 @@ Heroicon name: outline/x"
           <!-- Global notification live region, render this permanently at the end of the document -->
           <div
             x-data="{ show: true }"
+            x-init="setTimeout(() => show = false, 3000)"
             aria-live="assertive"
             class="
               fixed
@@ -549,10 +550,7 @@ Heroicon name: outline/x"
                   <p>Successfully saved!</p>
                 </div>
                 <div class="alert-close">
-                  <button
-                    @click="show = false; setTimeout(() => show = true, 1000)"
-                    class="alert-close-button"
-                  >
+                  <button @click="show = false" class="alert-close-button">
                     <span class="sr-only">Close</span>
                     <!-- Heroicon name: solid/x -->
                     <svg
