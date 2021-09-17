@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
@@ -81,7 +82,15 @@ def author_profile(request, pk):
 
 
 # user account
+@login_required(login_url='login')
 def user_account(request):
     profile = request.user.profile
     context = {'profile': profile}
     return render(request, 'users/profile.html', context)
+
+
+# Update the user account
+@login_required(login_url='login')
+def update_account(request):
+    context = {}
+    return render(request, 'users/setting.html', context)
