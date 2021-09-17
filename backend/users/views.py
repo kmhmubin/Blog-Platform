@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib import messages
-from users.forms import CustomUserCreationForm
+from users.forms import CustomUserCreationForm, ProfileForm
 from users.models import Profile
 
 
@@ -92,5 +92,16 @@ def user_account(request):
 # Update the user account
 @login_required(login_url='login')
 def update_account(request):
-    context = {}
+    profile = request.user.profile
+    form = ProfileForm(instance=profile)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "profile update successfully")
+            return redirect('account')
+        else:
+            messages.error(request, "An error has occurred during update the profile")
+    context = {'form': form}
     return render(request, 'users/setting.html', context)
