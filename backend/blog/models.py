@@ -1,7 +1,7 @@
 from autoslug import AutoSlugField
 from django.db import models
 from django.utils import timezone
-
+from ckeditor_uploader.fields import RichTextUploadingField
 from users.models import Profile
 from django.urls import reverse
 
@@ -23,7 +23,7 @@ class Article(models.Model):
     slug = AutoSlugField(populate_from='title', unique=True, null=False, db_index=True, unique_for_date='publish')
     excerpt = models.CharField(max_length=60)
     featured_image = models.ImageField(upload_to="posts", null=True, blank=True, default="default.jpg")
-    content = models.TextField(blank=True, null=True)
+    content = RichTextUploadingField()
     created = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)
     publish = models.DateTimeField(default=timezone.now)

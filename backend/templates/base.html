@@ -13,6 +13,10 @@
     <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}"/>
     {# Custom Style #}
     <link rel="stylesheet" href="{% static 'css/tailwind.css' %}"/>
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <title>Write up {% block title %}{% endblock title %}</title>
 </head>
 <body class="font-mono overflow-y-auto">
