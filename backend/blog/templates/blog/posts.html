@@ -10,7 +10,7 @@
         <div class="px-4 sm:px-0">
             <h1 class="sr-only">Recent articles</h1>
             <ul class="space-y-4">
-                {% for post in all_posts %}
+                {% for post in posts %}
 
                     <li class="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
                         <article aria-labelledby="question-title-81614">
@@ -21,15 +21,15 @@
                                     <div class="flex-shrink-0">
                                         <img
                                                 class="h-10 w-10 rounded-full"
-                                                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                                alt=""
+                                                src="{{ post.author.profile_image.url }}"
+                                                alt="{{ post.author.name }}"
                                         />
                                     </div>
                                     <!-- author name -->
                                     <div class="min-w-0 flex-1">
                                         <p class="text-sm font-medium text-gray-900">
-                                            <a href="#" class="hover:underline"
-                                            >Dries Vincent</a
+                                            <a href="{% url 'author-profile' post.author.id %}" class="hover:underline"
+                                            >{{ post.author.name|title }}</a
                                             >
                                         </p>
                                         <!-- published date -->

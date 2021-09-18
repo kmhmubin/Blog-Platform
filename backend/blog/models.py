@@ -3,6 +3,13 @@ from django.db import models
 from django.utils import timezone
 
 from users.models import Profile
+from django.urls import reverse
+
+
+# Model Manager for article
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super(PublishedManager, self).get_queryset().filter(status='published')
 
 
 # article model
@@ -29,3 +36,12 @@ class Article(models.Model):
     # display the article name
     def __str__(self):
         return self.title
+
+    # default model manager
+    objects = models.Manager()
+    # custom model manager
+    published = PublishedManager()
+
+    # canonical URL for the article
+    def get_absolute_url(self):
+        return reverse('blog:post_detail', args=[self.slug])
