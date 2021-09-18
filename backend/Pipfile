@@ -10,6 +10,7 @@ django-debug-toolbar = "*"
 mysqlclient = "*"
 django-autoslug = "*"
 django-taggit = "*"
+django-ckeditor = "*"
 
 [dev-packages]
 
