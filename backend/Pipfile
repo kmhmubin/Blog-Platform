@@ -8,6 +8,8 @@ django = "*"
 pillow = "*"
 django-debug-toolbar = "*"
 mysqlclient = "*"
+django-autoslug = "*"
+django-taggit = "*"
 
 [dev-packages]
 
