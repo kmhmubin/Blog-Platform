@@ -9,7 +9,7 @@ from users.models import Profile
 class Article(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
-        ('publish', 'Publish'),
+        ('published', 'Published'),
     )
     author = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL, related_name='blog_posts')
     title = models.CharField(max_length=200)
