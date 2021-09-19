@@ -2,33 +2,6 @@
 
 {% block content %}
 
-    {#    <h1>Article form</h1>#}
-    {##}
-    {##}
-    {#    <form action="" method="POST" enctype="multipart/form-data">#}
-    {#        {% csrf_token %}#}
-    {#        {{ form.media }}#}
-    {#        {{ form }}#}
-    {#        <input type="submit" class="#}
-    {#                            bg-rose-600#}
-    {#                            border border-transparent#}
-    {#                            rounded-md#}
-    {#                            shadow-sm#}
-    {#                            py-2#}
-    {#                            px-4#}
-    {#                            inline-flex#}
-    {#                            justify-center#}
-    {#                            text-sm#}
-    {#                            font-medium#}
-    {#                            text-white#}
-    {#                            hover:bg-rose-700#}
-    {#                            focus:outline-none#}
-    {#                            focus:ring-2#}
-    {#                            focus:ring-offset-2#}
-    {#                            focus:ring-rose-500#}
-    {#                          ">#}
-    {#    </form>#}
-
     <main class="lg:col-span-12 xl:col-span-12">
         <div class="space-y-4">
             <div class="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
@@ -43,6 +16,27 @@
 
                         </div>
                     {% endfor %}
+
+                    <div class="flex mb-6 space-x-2">
+                        {% for tag in post.tags.all %}
+                            <div class="
+                          items-center
+                          px-3
+                          py-0.9
+                          rounded-full
+                          text-md
+                          font-bold
+                          bg-rose-100
+                          text-rose-800" data-tag="{{ tag.id }}"
+                                 data-project="{{ post.slug }}">{{ tag.name }} &#215;
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="flex mb-6 space-x-2">
+                        <label for="formInput#text">Tags</label>
+                        <textarea class="form-control" name="newtags" placeholder="Add tags here..."></textarea>
+                    </div>
                     <div class="py-3"></div>
                     <input type="submit" class="
                                 bg-rose-600

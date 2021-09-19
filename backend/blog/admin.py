@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Article
+from .models import Article, Review, Tag
 
 
 # Display custom list for Article model
@@ -11,3 +11,13 @@ class ArticleAdmin(admin.ModelAdmin):
     search_fields = ('title', 'author')
     date_hierarchy = 'publish'
     ordering = ('status', 'publish')
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('owner', 'post', 'created')
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name', 'created')
