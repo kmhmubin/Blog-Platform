@@ -43,8 +43,10 @@
                         </h1>
                         <!-- article tags block -->
                         <div class="flex mb-6 space-x-2">
-                            <a
-                                    class="
+                            {% for tag in post.tags.all %}
+
+                                <span
+                                        class="
                           inline-flex
                           items-center
                           px-3
@@ -55,52 +57,21 @@
                           bg-rose-100
                           text-rose-800
                         "
-                                    href="#"
-                            >CSS</a
-                            >
-                            <a
-                                    class="
-                          inline-flex
-                          items-center
-                          px-3
-                          py-0.9
-                          rounded-full
-                          text-md
-                          font-bold
-                          bg-rose-100
-                          text-rose-800
-                        "
-                                    href="#"
-                            >Tailwind</a
-                            >
-                            <a
-                                    class="
-                          inline-flex
-                          items-center
-                          px-3
-                          py-0.9
-                          rounded-full
-                          text-md
-                          font-bold
-                          bg-rose-100
-                          text-rose-800
-                        "
-                                    href="#"
-                            >AlpineJS</a
-                            >
+                                >{{ tag }}</span>
+                            {% endfor %}
                         </div>
                         <!-- author block -->
                         <a class="flex sm:flex items-center text-gray-700" href="#">
                             <div class="mr-4 flex-shrink-0 self-center">
                                 <img
                                         class="h-14 w-full sm:w-14 rounded-full"
-                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                        alt=""
+                                        src="{{ post.author.profile_image.url }}"
+                                        alt="{{ post.author.name }}"
                                 />
                             </div>
                             <div>
                                 <h4 class="text-lg font-semibold text-gray-800">
-                                    John Doe
+                                    {{ post.author|title }}
                                 </h4>
                                 <p class="mt-1 text-sm text-gray-500">{{ post.publish.date }}</p>
                             </div>
