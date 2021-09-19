@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Article
+from blog.models import Article, Comment
 
 
 # Register the article model
@@ -11,3 +11,11 @@ class ArticleAdmin(admin.ModelAdmin):
     search_fields = ('title', 'body')
     date_hierarchy = 'publish'
     ordering = ('status', 'publish')
+
+
+# Register the comment model
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'post', 'created', 'active')
+    list_filter = ('active', 'created', 'updated')
+    search_fields = ('name', 'email', 'body')

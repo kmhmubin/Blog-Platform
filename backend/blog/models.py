@@ -1,9 +1,12 @@
+import uuid
+
 from autoslug import AutoSlugField
-from django.db import models
-from django.utils import timezone
 from ckeditor_uploader.fields import RichTextUploadingField
-from users.models import Profile
+from django.db import models
 from django.urls import reverse
+from django.utils import timezone
+
+from users.models import Profile
 
 
 # Model Manager for article
@@ -45,3 +48,27 @@ class Article(models.Model):
     # canonical URL for the article
     def get_absolute_url(self):
         return reverse('blog:post_detail', args=[self.slug])
+
+    # Default comment option
+    def get_comments(self):
+        return self.comments.filter(active=True)
+
+
+# Article Comment model
+class Comment(models.Model):
+    post = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    body = models.TextField()
+    active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    # sort out by date
+    class Meta:
+        ordering = ('created',)
+
+    # display the comment body
+    def __str__(self):
+        return self.body
+
