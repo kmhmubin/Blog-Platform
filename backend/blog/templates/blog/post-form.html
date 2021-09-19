@@ -2,12 +2,68 @@
 
 {% block content %}
 
-    <h1>Article form</h1>
-    {{ form.media }}
+    {#    <h1>Article form</h1>#}
+    {##}
+    {##}
+    {#    <form action="" method="POST" enctype="multipart/form-data">#}
+    {#        {% csrf_token %}#}
+    {#        {{ form.media }}#}
+    {#        {{ form }}#}
+    {#        <input type="submit" class="#}
+    {#                            bg-rose-600#}
+    {#                            border border-transparent#}
+    {#                            rounded-md#}
+    {#                            shadow-sm#}
+    {#                            py-2#}
+    {#                            px-4#}
+    {#                            inline-flex#}
+    {#                            justify-center#}
+    {#                            text-sm#}
+    {#                            font-medium#}
+    {#                            text-white#}
+    {#                            hover:bg-rose-700#}
+    {#                            focus:outline-none#}
+    {#                            focus:ring-2#}
+    {#                            focus:ring-offset-2#}
+    {#                            focus:ring-rose-500#}
+    {#                          ">#}
+    {#    </form>#}
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit">
-    </form>
+    <main class="lg:col-span-12 xl:col-span-12">
+        <div class="space-y-4">
+            <div class="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
+                <form action="#" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {% for field in form %}
+                        <div>
+                            <label for="{{ field.label }}"
+                                   class="block text-sm font-medium text-gray-700">{{ field.label }}</label>
+                            {{ field }}
+
+                        </div>
+                    {% endfor %}
+                    <div class="py-3"></div>
+                    <input type="submit" class="
+                                bg-rose-600
+                                border border-transparent
+                                rounded-md
+                                shadow-sm
+                                py-2
+                                px-4
+                                inline-flex
+                                justify-center
+                                text-sm
+                                font-medium
+                                text-white
+                                hover:bg-rose-700
+                                focus:outline-none
+                                focus:ring-2
+                                focus:ring-offset-2
+                                focus:ring-rose-500
+                              ">
+                </form>
+            </div>
+        </div>
+    </main>
 {% endblock %}

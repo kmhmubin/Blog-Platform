@@ -12,9 +12,9 @@
                     <div class="rounded-lg overflow-hidden my-2">
                         <!-- author image -->
                         <img
-                                class="object-cover w-full h-56 object-cover object-center"
-                                src="{{ post.author.profile_image.url }}"
-                                alt="{{ post.author }}"
+                                class="w-full h-56 object-cover object-center"
+                                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+                                alt="avatar"
                         />
                         <!-- author status -->
                         <div class="flex items-center px-6 py-3 bg-gray-900">
@@ -32,10 +32,11 @@
                         <!-- author name and bio -->
                         <div class="py-4">
                             <h1 class="text-2xl font-semibold text-gray-800">
-                                {{ post.author.name|title }}
+                                Patterson johnson
                             </h1>
                             <p class="py-2 text-lg text-gray-700">
-                                {{ post.author.profile_tagline }}
+                                Full Stack maker & UI / UX Designer , love hip hop
+                                music Author of Building UI.
                             </p>
                             <!-- Author follow button -->
                             <div class="flex py-2 px-1">
@@ -92,15 +93,30 @@
                     <div class="mt-6 flow-root">
                         <!-- articles -->
                         <ul class="-my-4 divide-y divide-gray-200">
-                            {% for article in post.article_set.all %}
-                                <li class="flex py-4 space-x-3">
-                                    <div class="min-w-0 flex-1">
-                                        <a href="{{ post.get_absolute_url }}" class="text-sm text-gray-800">
-                                            {{ post.title }}
-                                        </a>
-                                    </div>
-                                </li>
-                            {% endfor %}
+                            <li class="flex py-4 space-x-3">
+                                <div class="min-w-0 flex-1">
+                                    <a href="#" class="text-sm text-gray-800">
+                                        All you need to know about var, let & const in
+                                        JavaScript
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="flex py-4 space-x-3">
+                                <div class="min-w-0 flex-1">
+                                    <a href="#" class="text-sm text-gray-800">
+                                        🚀10 Trending projects on GitHub for web
+                                        developers - 20th August 2021
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="flex py-4 space-x-3">
+                                <div class="min-w-0 flex-1">
+                                    <a href="#" class="text-sm text-gray-800">
+                                        The Most Efficient Ways to Clone objects in
+                                        JavaScript
+                                    </a>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     <div class="mt-6">

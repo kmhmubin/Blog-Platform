@@ -39,7 +39,7 @@
                                 itemprop="headline"
                                 title="{{ post.title }}"
                         >
-                            {{ post.title|title }}
+                            {{ post.title }}
                         </h1>
                         <!-- article tags block -->
                         <div class="flex mb-6 space-x-2">
@@ -90,17 +90,17 @@
                             >
                         </div>
                         <!-- author block -->
-                        <a class="flex sm:flex items-center text-gray-700" href="{% url 'author-profile' post.author.id %}">
+                        <a class="flex sm:flex items-center text-gray-700" href="#">
                             <div class="mr-4 flex-shrink-0 self-center">
                                 <img
-                                        class="object-cover h-14 w-full sm:w-14 rounded-full"
-                                        src="{{ post.author.profile_image.url }}"
-                                        alt="{{ post.author }}"
+                                        class="h-14 w-full sm:w-14 rounded-full"
+                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                        alt=""
                                 />
                             </div>
                             <div>
                                 <h4 class="text-lg font-semibold text-gray-800">
-                                    {{ post.author|title }}
+                                    John Doe
                                 </h4>
                                 <p class="mt-1 text-sm text-gray-500">{{ post.publish.date }}</p>
                             </div>
@@ -120,7 +120,7 @@
                       whitespace-normal
                     "
                     >
-                        {{ post.content|safe }}
+                        {{ post.content|safe|linebreaks }}
                     </div>
                 </article>
 

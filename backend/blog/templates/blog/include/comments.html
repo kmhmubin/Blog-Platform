@@ -29,34 +29,172 @@
                         <span class="px-3">Discussion</span>
                       </span>
         </h3>
-        <p class="text-sm text-gray-500">{{ post.comments.count }} comment{{ post.comments.count|pluralize }}</p>
-
-        {% if not post.comments.all %}
-            No comments yet
-        {% endif %}
+        <p class="text-sm text-gray-500">3 comments</p>
     </div>
 
-    <form action="{% url 'blog:add-comment' post.slug %}" class="mt-8" method="post">
-        {% csrf_token %}
+    <!-- discussion section card -->
+    <div class="space-y-5 py-2">
+        <!-- Comment block -->
+        <div class="flex item-start border0b pb-5 border-gray-200">
+            <!-- comment author image -->
+            <div class="w-12 h-12 flex-shrink-0">
+                <img
+                        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
+                        alt="user_photo"
+                        class="w-full rounded-full"
+                />
+            </div>
+            <!-- Comment author name and datetime -->
+            <div class="flex-grow pl-4">
+                <h4 class="text-base font-roboto">Emily Selman</h4>
+                <p class="text-xs text-gray-400">
+                    9 Aprile 2021 at 12:34 AM
+                </p>
+                <!-- Comment content text -->
+                <p class="text-sm font-600 mt-2">
+                    Great article. Thanks
+                </p>
+                <!-- Comment action buttons -->
+                <div class="flex gap-2 mt-2">
+                    <button
+                            class="
+                              text-gray-500
+                              px-2
+                              text-xs
+                              inline-flex
+                              border border-gray-200
+                              rounded-sm
+                              shadow-sm
+                              hover:bg-rose-200 hover:text-gray-800
+                              transition
+                            "
+                    >
+                        <span class="sr-only">Reply comment</span>
+                        <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 pr-1"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                        >
+                            <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+                        </svg>
+                        <span>Reply</span>
+                    </button>
+                    <button
+                            class="
+                              text-gray-500
+                              px-2
+                              text-xs
+                              inline-flex
+                              border border-gray-200
+                              rounded-sm
+                              shadow-sm
+                              hover:bg-rose-600 hover:text-white
+                              transition
+                            "
+                    >
+                        <span class="sr-only">Delete comment</span>
+                        <span>Delete</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex item-start border0b pb-5 border-gray-200">
+            <!-- comment author image -->
+            <div class="w-12 h-12 flex-shrink-0">
+                <img
+                        src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
+                        alt="user_photo"
+                        class="w-full rounded-full"
+                />
+            </div>
+            <!-- Comment author name and datetime -->
+            <div class="flex-grow pl-4">
+                <h4 class="text-base font-roboto">Floyed Miles</h4>
+                <p class="text-xs text-gray-400">
+                    12 Aprile 2021 at 12:34 AM
+                </p>
+                <!-- Comment content text -->
+                <p class="text-sm font-600 mt-2">
+                    What books do you have on your bookshelf just to look
+                    smarter than you actually are?
+                </p>
+                <!-- Comment action buttons -->
+                <div class="flex gap-2 mt-2">
+                    <button
+                            class="
+                              text-gray-500
+                              px-2
+                              text-xs
+                              inline-flex
+                              border border-gray-200
+                              rounded-sm
+                              shadow-sm
+                              hover:bg-rose-200 hover:text-gray-800
+                              transition
+                            "
+                    >
+                        <span class="sr-only">Reply comment</span>
+                        <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4 pr-1"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                        >
+                            <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+                        </svg>
+                        <span>Reply</span>
+                    </button>
+                    <button
+                            class="
+                              text-gray-500
+                              px-2
+                              text-xs
+                              inline-flex
+                              border border-gray-200
+                              rounded-sm
+                              shadow-sm
+                              hover:bg-rose-600 hover:text-white
+                              transition
+                            "
+                    >
+                        <span class="sr-only">Delete comment</span>
+                        <span>Delete</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comment input form -->
+
+    <form action="#" class="mt-8">
         <h5 class="text-base mb-1">Comment:</h5>
-        <input type="hidden" name="post_id" value="{{ post.slug }}">
-        <input type="hidden" name="post_url" value="{{ post.get_absolute_url }}">
-        <input type="hidden" name="post_author" value="{{ comment.author }}">
         <textarea
                 type="text"
                 class="
-                                w-full
-                                border border-gray-200
-                                py-3
-                                px-5
-                                text-sm
-                                rounded-sm
-                                h-20
-                                focus:outline-none focus:border-gray-400
-                              "
+                        w-full
+                        border border-gray-200
+                        py-3
+                        px-5
+                        text-sm
+                        rounded-sm
+                        h-20
+                        focus:outline-none focus:border-gray-400
+                      "
                 placeholder="type your comment"
-        >{{ form.body }}</textarea>
-
+        ></textarea>
         <div class="mt-2">
             <button
                     type="submit"
@@ -78,60 +216,4 @@
             </button>
         </div>
     </form>
-
-
-    <!-- discussion section card -->
-    <div class="space-y-5 py-2">
-        <!-- Comment block -->
-        {% for comment in post.comments.all %}
-            {% if user.is_authenticated or comment.active %}
-
-                <div class="flex item-start border0b pb-5 border-gray-200">
-                    <!-- comment author image -->
-                    <div class="w-12 h-12 flex-shrink-0">
-                        <img
-                                src="{{ comment.author.profile_image.url }}"
-                                alt="{{ comment.author }}"
-                                class="w-full rounded-full"
-                        />
-                    </div>
-                    <!-- Comment author name and datetime -->
-                    <div class="flex-grow pl-4">
-                        <h4 class="text-base font-roboto">{{ comment.author }}</h4>
-                        <p class="text-xs text-gray-400">
-                            {{ comment.created.date }}
-                        </p>
-                        <!-- Comment content text -->
-                        <p class="text-sm font-600 mt-2">
-                            {{ comment.body }}
-                        </p>
-                        <!-- Comment action buttons -->
-                        <div class="flex gap-2 mt-2">
-                            <a
-                                    href="{% url 'blog:comment_remove' comment.id %}"
-                                    class="
-                              text-gray-500
-                              px-2
-                              text-xs
-                              inline-flex
-                              border border-gray-200
-                              rounded-sm
-                              shadow-sm
-                              hover:bg-rose-600 hover:text-white
-                              transition
-                            "
-                            >
-                                <span class="sr-only">Delete comment</span>
-                                <span>Delete</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            {% endif %}
-        {% endfor %}
-    </div>
-
-
 </div>
-

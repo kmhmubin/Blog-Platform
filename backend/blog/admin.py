@@ -1,21 +1,13 @@
 from django.contrib import admin
-from blog.models import Article, Comment
+
+from .models import Article
 
 
-# Register the article model
-
+# Display custom list for Article model
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'author', 'publish', 'status')
+    list_display = ('title', 'author', 'publish', 'status')
     list_filter = ('status', 'created', 'publish', 'author')
-    search_fields = ('title', 'body')
+    search_fields = ('title', 'author')
     date_hierarchy = 'publish'
     ordering = ('status', 'publish')
-
-
-# Register the comment model
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'post', 'created', 'active')
-    list_filter = ('active', 'created', 'updated')
-    search_fields = ('name', 'email', 'body')

@@ -1,48 +1,70 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from blog.models import Article, Comment
-from .forms import CommentForm
+from django.shortcuts import render, redirect
+from .models import Article
+from .forms import PostForm
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 
 
-# Display all the published post
-def post_list(request):
-    posts = Article.published.all()
-    context = {'posts': posts}
+# Create your views here.
+def posts(request):
+    all_posts = Article.published.all()
+    context = {'all_posts': all_posts}
     return render(request, 'blog/posts.html', context)
 
 
-# display the single post
-@login_required(login_url='login')
-def post_details(request, slug):
-    post = get_object_or_404(Article, slug=slug, status='published')
-    context = {'post': post}
+# display a single article
+def single_post(request, slug):
+    post = Article.objects.get(slug=slug)
+    context = {
+        'post': post,
+    }
     return render(request, 'blog/single-post.html', context)
 
 
-# add new comment to post
-@login_required(login_url='login')
-def add_comment(request, slug):
-    post = get_object_or_404(Article, slug=slug, status='published')
-    comment_form = CommentForm()
+# create a new article
+@login_required(login_url="login")
+def create_post(request):
+    profile = request.user.profile
+    form = PostForm()
+
+    # create a new post
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.post = post
-            comment.save()
-            messages.success(request, "Comment Added Successful")
-            return redirect('blog:post_detail', slug=post.slug)
-        else:
-            messages.error(request, "An error has occurred during Comment")
-            comment_form = CommentForm()
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.author = profile
+            article.save()
+            return redirect('posts')
 
-    context = {'form': comment_form}
-    return render(request, 'blog/include/comments.html', context)
+    context = {'form': form}
+    return render(request, 'blog/post-form.html', context)
 
 
-@login_required(login_url='login')
-def comment_remove(request, pk):
-    comment = get_object_or_404(Comment, id=pk)
-    comment.delete()
-    return redirect('blog:post_detail', id=comment.post.pk)
+# update the exiting post
+@login_required(login_url="login")
+def update_post(request, slug):
+    profile = request.user.profile
+    post = Article.objects.get(slug__exact=slug)
+    form = PostForm(instance=post)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('posts')
+
+    context = {'form': form, 'post': post}
+    return render(request, 'blog/post-form.html', context)
+
+
+# delete the post
+@login_required(login_url="login")
+def delete_post(request, slug):
+    profile = request.user.profile
+    post = Article.objects.get(slug__exact=slug)
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('posts')
+
+    context = {'object': post}
+    return render(request, 'blog/post-form.html', context)

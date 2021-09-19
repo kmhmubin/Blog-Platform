@@ -1,25 +1,15 @@
-from django.forms import ModelForm, Textarea
+from django.forms import ModelForm
 
-from blog.models import Article, Comment
+from blog.models import Article
 
 
-# Creating article Form
 class PostForm(ModelForm):
     class Meta:
         model = Article
-        fields = ['title', 'excerpt', 'featured_image', 'content']
+        fields = ['title', 'excerpt', 'featured_image', 'content', 'status']
 
-
-# Creating Comment Form
-class CommentForm(ModelForm):
-    class Meta:
-        model = Comment
-        fields = ['body', ]
-        labels = {
-            'body': 'Comment',
-        }
-
-    # overriding the default form setting and adding custom style
     def __init__(self, *args, **kwargs):
-        super(CommentForm, self).__init__(*args, **kwargs)
-        self.fields['body'].widget.attrs = {'placeholder': 'Comment here...', 'class': 'form-control', 'rows': '2'}
+        super(PostForm, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'form-control'})
