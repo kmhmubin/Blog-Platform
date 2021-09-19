@@ -34,7 +34,7 @@
 
     <!-- Comment input form -->
     {% if request.user.profile.id in post.reviewrs %}
-        <p>You have already submitted your review for this project</p>
+        <p>You have already submitted your comment for this project</p>
 
     {% elif request.user.profile == post.author %}
         <p>You cannot comment your own work</p>
